@@ -68,7 +68,8 @@
             })
         }).then(response => response.json())
             .then(json => {console.log(json);
-                            $('#alert').show()})
+                            $('.alert').show();
+                            location.reload();})
     }
 
     $(document).ready(function(){
