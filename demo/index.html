@@ -25,9 +25,9 @@
         function getProducts(){
 
             let userAction = async () => {
-                let response = await fetch('aqui function endpoint');
-                let myJson = await response.json(); //extract JSON from the http response
-
+                let response = await fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==');
+                let myJson = await response.json();
+                return myJson;
             }
 
             let products = [
@@ -37,7 +37,7 @@
                 {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"}
             ];
 
-            return products;
+            return userAction;
         }
 
         $(document).ready(function(){
