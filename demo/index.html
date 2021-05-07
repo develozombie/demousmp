@@ -10,8 +10,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-
-
         function buildElement(url,name,description){
             let htmlElement = "<div class=\"col-sm-4\">\n" +
                 "            <h3>"+name+"</h3>\n" +
@@ -25,11 +23,18 @@
 
         //metodo mock, reemplazar por la llamada al function
         function getProducts(){
+
+            let userAction = async () => {
+                let response = await fetch('aqui function endpoint');
+                let myJson = await response.json(); //extract JSON from the http response
+
+            }
+
             let products = [
-                {"img":"https://mdbootstrap.com/img/new/standard/city/041.jpg","description":"prod1"},
-                {"img":"https://www.w3schools.com/bootstrap/sanfran.jpg","description":"prod2"},
-                {"img":"https://mdbootstrap.com/img/new/standard/city/041.jpg","description":"prod3"},
-                {"img":"https://www.w3schools.com/bootstrap/sanfran.jpg","description":"prod4"}
+                {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
+                {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"},
+                {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
+                {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"}
             ];
 
             return products;
@@ -41,9 +46,9 @@
 
             let text = "";
             for (i in products) {
-                text += buildElement( products[i].img ,
-                                      products[i].description,
-                                      products[i].description);
+                text += buildElement( products[i].imagen ,
+                                      products[i].descripcion,
+                                      products[i].descripcion);
             }
             $("div.container").append("<div class=\"row\">"+text+ "</div>")
         });
