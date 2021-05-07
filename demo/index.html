@@ -25,13 +25,10 @@
         //metodo mock, reemplazar por la llamada al function
         function getProducts(){
 
-            let result;
-            fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
+            return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
                 .then(response => response.json())
                 .then(json => {console.log(json);
                                 return json;})
-
-
 
             let products = [
                 {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
