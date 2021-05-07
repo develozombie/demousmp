@@ -68,11 +68,11 @@
             })
         }).then(response => response.json())
             .then(json => {console.log(json);
-                            $('#alert').alert()})
+                            $('#alert').show()})
     }
 
     $(document).ready(function(){
-        $('.alert').alert('close');
+        $('.alert').hide();
         let loadProducts = getProducts().then(function(result){
             console.log(result);
             let text = "";
