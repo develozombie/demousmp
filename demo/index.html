@@ -24,20 +24,11 @@
             url
         </div>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <input type="text" class="form-control" id="imageurl" aria-describedby="basic-addon3">
         </div>
-        <div class="col-sm-2"><button type="button" class="btn btn-primary">Grabar</button></div>
+        <div class="col-sm-2"><button type="button" class="btn btn-primary" id="btngrabar">Grabar</button></div>
     </div>
     <p>
-    <div class="row">
-        <div class="col-sm-2">
-            descripcion
-        </div>
-        <div class="col-sm-5">
-            <input type="text" class="form-control" id="basic-desc" aria-describedby="basic-addon3">
-        </div>
-
-    </div>
 </div>
 
 
@@ -53,7 +44,6 @@
         return htmlElement
     }
 
-    //metodo mock, reemplazar por la llamada al function
     function getProducts(){
         return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
             .then(response => response.json())
@@ -61,12 +51,17 @@
                             return json;})
     }
 
-    //metodo mock, reemplazar por la llamada al function
-    function postProducts(){
-        return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
-            .then(response => response.json())
-            .then(json => {console.log(json);
-                return json;})
+    function postProducts(url){
+        fetch('https://demousmp.azurewebsites.net/api/RegistrarFunction',{
+            method: 'POST',
+            headers: {
+                    "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                imagen: url
+            })
+        }).then(response => response.json())
+            .then(json => console.log(json))
     }
 
     $(document).ready(function(){
@@ -82,9 +77,11 @@
             }
         );
 
-
-
-
+        $("#btngrabar").click(function(){
+            temp=$("#imageurl").val();
+            console.log(temp);
+            postProducts($("#imageurl").val());
+        });
 
     });
 </script>
