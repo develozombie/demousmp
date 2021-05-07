@@ -19,14 +19,32 @@
 
 <div class="container">
 
+    <div class="row">
+        <div class="col-sm-2">
+            url
+        </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+        <div class="col-sm-2"><button type="button" class="btn btn-primary">Grabar</button></div>
+    </div>
+    <p>
+    <div class="row">
+        <div class="col-sm-2">
+            descripcion
+        </div>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="basic-desc" aria-describedby="basic-addon3">
+        </div>
 
+    </div>
 </div>
+
+
 </body>
 <script>
-    let globalresponse;
     function buildElement(url,name,description){
         let htmlElement = "<div class=\"col-sm-4\">\n" +
-            "            <h3>"+name+"</h3>\n" +
             "            <img src="+url+
             "                   class=\"img-thumbnail\" " +
             "                   alt="+description+">\n" +
@@ -40,24 +58,32 @@
         return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
             .then(response => response.json())
             .then(json => {console.log(json);
+                            return json;})
+    }
+
+    //metodo mock, reemplazar por la llamada al function
+    function postProducts(){
+        return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
+            .then(response => response.json())
+            .then(json => {console.log(json);
                 return json;})
     }
 
     $(document).ready(function(){
-
-
-        let products = getProducts().then(function(result){
+        let loadProducts = getProducts().then(function(result){
             console.log(result);
             let text = "";
             for (i in result) {
                 text += buildElement( result[i].imagen ,
                     result[i].descripcion,
                     result[i].descripcion);
-
             };
             $("div.container").append("<div class=\"row\">"+text+ "</div>");
             }
         );
+
+
+
 
 
     });
