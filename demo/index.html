@@ -36,9 +36,9 @@
     }
 
     //metodo mock, reemplazar por la llamada al function
-    function getProducts(){
+    async function getProducts(){
 
-        return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
+        return await fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
             .then(response => response.json())
             .then(json => {console.log(json);
                 return json;})
@@ -54,7 +54,7 @@
     $(document).ready(function(){
 
 
-        let products = getProducts();
+        let products = getProducts().then();
         console.log(products);
         let text = "";
         for (i in products) {
