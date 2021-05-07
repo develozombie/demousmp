@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<div class="alert alert-success" id="alert" role="alert">
+<div class="alert alert-success" role="alert">
     Imagen Cargada!!!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -72,7 +72,7 @@
     }
 
     $(document).ready(function(){
-        $('#alert').alert();
+        $('.alert').alert();
         let loadProducts = getProducts().then(function(result){
             console.log(result);
             let text = "";
