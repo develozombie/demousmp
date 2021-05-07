@@ -29,6 +29,8 @@
                 .then(response => response.json())
                 .then(json => console.log(json))
 
+            return json;
+
             let products = [
                 {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
                 {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"},
@@ -36,7 +38,7 @@
                 {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"}
             ];
 
-            return products
+
         }
 
         $(document).ready(function(){
