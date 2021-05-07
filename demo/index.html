@@ -27,6 +27,7 @@
             let userAction = async () => {
                 let response = await fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==');
                 let myJson = await response.json();
+                console.log(myJson);
                 return myJson;
             }
 
