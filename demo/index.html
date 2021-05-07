@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+        let globalresponse;
         function buildElement(url,name,description){
             let htmlElement = "<div class=\"col-sm-4\">\n" +
                 "            <h3>"+name+"</h3>\n" +
@@ -24,12 +25,9 @@
         //metodo mock, reemplazar por la llamada al function
         function getProducts(){
 
-            let userAction = async () => {
-                let response = await fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==');
-                let myJson = await response.json();
-                console.log(myJson);
-                return myJson;
-            }
+            fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
+                .then(response => response.json())
+                .then(json => console.log(json))
 
             let products = [
                 {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
@@ -38,14 +36,14 @@
                 {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"}
             ];
 
-            return userAction;
+            return products
         }
 
         $(document).ready(function(){
 
-            let products = getProducts();
 
-            let text = "";
+            let products = getProducts();
+                let text = "";
             for (i in products) {
                 text += buildElement( products[i].imagen ,
                                       products[i].descripcion,
