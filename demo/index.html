@@ -9,48 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
-        let globalresponse;
-        function buildElement(url,name,description){
-            let htmlElement = "<div class=\"col-sm-4\">\n" +
-                "            <h3>"+name+"</h3>\n" +
-                "            <img src="+url+
-                "                   class=\"img-thumbnail\" " +
-                "                   alt="+description+">\n" +
-                "            <p>"+description+"</p>\n" +
-                "        </div>"
-            return htmlElement
-        }
 
-        //metodo mock, reemplazar por la llamada al function
-        function getProducts(){
-
-            return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
-                .then(response => response.json())
-                .then(json => {console.log(json);
-                                return json;})
-
-            let products = [
-                {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
-                {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"},
-                {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
-                {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"}
-            ];
-        }
-
-        $(document).ready(function(){
-
-
-            let products = getProducts();
-                let text = "";
-            for (i in products) {
-                text += buildElement( products[i].imagen ,
-                                      products[i].descripcion,
-                                      products[i].descripcion);
-            }
-            $("div.container").append("<div class=\"row\">"+text+ "</div>")
-        });
-    </script>
 </head>
 <body>
 
@@ -63,4 +22,47 @@
 
 </div>
 </body>
+<script>
+    let globalresponse;
+    function buildElement(url,name,description){
+        let htmlElement = "<div class=\"col-sm-4\">\n" +
+            "            <h3>"+name+"</h3>\n" +
+            "            <img src="+url+
+            "                   class=\"img-thumbnail\" " +
+            "                   alt="+description+">\n" +
+            "            <p>"+description+"</p>\n" +
+            "        </div>"
+        return htmlElement
+    }
+
+    //metodo mock, reemplazar por la llamada al function
+    function getProducts(){
+
+        return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
+            .then(response => response.json())
+            .then(json => {console.log(json);
+                return json;})
+
+        let products = [
+            {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
+            {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"},
+            {"imagen":"https://mdbootstrap.com/img/new/standard/city/041.jpg","descripcion":"descripcion"},
+            {"imagen":"https://www.w3schools.com/bootstrap/sanfran.jpg","descripcion":"descripcion"}
+        ];
+    }
+
+    $(document).ready(function(){
+
+
+        let products = getProducts();
+        console.log(products);
+        let text = "";
+        for (i in products) {
+            text += buildElement( products[i].imagen ,
+                products[i].descripcion,
+                products[i].descripcion);
+        }
+        $("div.container").append("<div class=\"row\">"+text+ "</div>")
+    });
+</script>
 </html>
