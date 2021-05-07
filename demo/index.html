@@ -8,23 +8,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
 </head>
-<body>
-<div class="alert alert-success" role="alert">
-    Imagen Cargada!!!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
 
+<body>
 <div class="jumbotron text-center">
     <h1>Mi Super Startup</h1>
 </div>
 
 <div class="container">
-
     <div class="row">
         <div class="col-sm-2">
             url
@@ -36,9 +27,8 @@
     </div>
     <p>
 </div>
-
-
 </body>
+
 <script>
     function buildElement(url,name,description){
         let htmlElement = "<div class=\"col-sm-4\">\n" +
@@ -68,12 +58,11 @@
             })
         }).then(response => response.json())
             .then(json => {console.log(json);
-                            $('.alert').show();
                             location.reload();})
     }
 
     $(document).ready(function(){
-        $('.alert').hide();
+
         let loadProducts = getProducts().then(function(result){
             console.log(result);
             let text = "";
