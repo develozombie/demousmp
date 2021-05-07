@@ -36,25 +36,27 @@
     }
 
     //metodo mock, reemplazar por la llamada al function
-    async function getProducts(){
-
-        let res = await fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
-        let data = await res.json();
-        return data;
-
+    function getProducts(){
+        return fetch('https://demousmp.azurewebsites.net/api/LeerFunction?code=nceQ0Zaor9tVTGNKsWSRkBbv2A61xs97P4UyrYlmFinyQ5iqULSWZQ==')
+            .then(response => response.json())
+            .then(json => {console.log(json);
+                return json;})
     }
 
     $(document).ready(function(){
 
 
-        let products = getProducts().then();
-        console.log(products);
-        let text = "";
-        for (i in products) {
-            text += buildElement( products[i].imagen ,
-                products[i].descripcion,
-                products[i].descripcion);
-        }
+        let products = getProducts().then(function(result){
+            console.log(result);
+            let text = "";
+            for (i in result) {
+                text += buildElement( result[i].imagen ,
+                    result[i].descripcion,
+                    result[i].descripcion);
+            }
+            }
+        );
+
         $("div.container").append("<div class=\"row\">"+text+ "</div>")
     });
 </script>
