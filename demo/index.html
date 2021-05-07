@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mi super Startup</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+
+
+        function buildElement(url,name,description){
+            let htmlElement = "<div class=\"col-sm-4\">\n" +
+                "            <h3>"+name+"</h3>\n" +
+                "            <img src="+url+
+                "                   class=\"img-thumbnail\" " +
+                "                   alt="+description+">\n" +
+                "            <p>"+description+"</p>\n" +
+                "        </div>"
+            return htmlElement
+        }
+
+        //metodo mock, reemplazar por la llamada al function
+        function getProducts(){
+            let products = [
+                {"img":"https://mdbootstrap.com/img/new/standard/city/041.jpg","description":"prod1"},
+                {"img":"https://www.w3schools.com/bootstrap/sanfran.jpg","description":"prod2"},
+                {"img":"https://mdbootstrap.com/img/new/standard/city/041.jpg","description":"prod3"},
+                {"img":"https://www.w3schools.com/bootstrap/sanfran.jpg","description":"prod4"}
+            ];
+
+            return products;
+        }
+
+        $(document).ready(function(){
+
+            let products = getProducts();
+
+            let text = "";
+            for (i in products) {
+                text += buildElement( products[i].img ,
+                                      products[i].description,
+                                      products[i].description);
+            }
+            $("div.container").append("<div class=\"row\">"+text+ "</div>")
+        });
+    </script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+    <h1>Mi Super Startup</h1>
+</div>
+
+<div class="container">
+
+
+</div>
+</body>
+</html>
